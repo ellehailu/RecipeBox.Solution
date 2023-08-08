@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace RecipeBox.Models
 {
-  public class RecipeBoxContext : IdentityDbContext<ApplicationUser>
-  {
-    public DbSet<Category> Categories { get; set; }
-    public DbSet<Recipe> Recipes { get; set; }
-    public DbSet<RecipeCategory> RecipeCategories { get; set; }
+    public class RecipeBoxContext : IdentityDbContext<ApplicationUser>
+    {
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<RecipeCategory> RecipeCategories { get; set; }
 
-    public RecipeBoxContext(DbContextOptions options) : base(options) { }
-  }
+        public RecipeBoxContext(DbContextOptions options) : base(options) { }
+    }
 }

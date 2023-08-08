@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ToDoList.Models;
+using RecipeBox.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace ToDoList
+namespace RecipeBox
 {
   class Program
   {
@@ -15,7 +15,7 @@ namespace ToDoList
 
       builder.Services.AddControllersWithViews();
 
-      builder.Services.AddDbContext<ToDoListContext>(
+      builder.Services.AddDbContext<RecipeBoxContext>(
                         dbContextOptions => dbContextOptions
                           .UseMySql(
                             builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
@@ -25,7 +25,7 @@ namespace ToDoList
 
       // New code below!!
       builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ToDoListContext>()
+                .AddEntityFrameworkStores<RecipeBoxContext>()
                 .AddDefaultTokenProviders();
 
       WebApplication app = builder.Build();
@@ -37,7 +37,7 @@ namespace ToDoList
       app.UseRouting();
 
       // New code below!
-      app.UseAuthentication(); 
+      app.UseAuthentication();
       app.UseAuthorization();
 
       app.MapControllerRoute(

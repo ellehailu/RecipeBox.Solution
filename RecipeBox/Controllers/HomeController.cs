@@ -1,31 +1,42 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using RecipeBox.Solution.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using RecipeBox.Models;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
+using System;
 
-namespace RecipeBox.Solution.Controllers;
 
-public class HomeController : Controller
+namespace RecipeBox.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        private readonly RecipeBoxContext _db;
 
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        private readonly UserManager<ApplicationUser> _userManager;
+        public HomeController(UserManager<ApplicationUser> userManager, RecipeBoxContext db)
+        {
+            _userManager = userManager;
+            _db = db;
+        }
+        [HttpGet("/")]
+        public async Task<ActionResult> Index()
+        {
+            // Category[] cats = _db.Categories.ToArray();
+            // Dictionary<string, object[]> model = new Dictionary<string, object[]>();
+            // model.Add("categories", cats);
+            // string userId = this._userManager.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            // ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+            // if (currentUser != null)
+            // {
+            //     Recipe[] recipes = _db.Recipes
+            //         .Where(entry => entry.User.Id == currentUser.Id)
+            //         .ToArray();
+            //     model.Add("recipes", recipes);
+            // }
+            // return View(model);
+            return View();
+        }
     }
 }

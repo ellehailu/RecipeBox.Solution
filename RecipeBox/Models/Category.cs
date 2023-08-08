@@ -8,9 +8,9 @@ namespace RecipeBox.Models
         public int CategoryId { get; set; }
         [Required(ErrorMessage = "The category's description can't be empty!")]
         public string Name { get; set; }
-        public int ItemId { get; set; }
-        public Item Item { get; set; }
-        public List<RecipeCategories> JoinEntities { get; }
+        public int RecipeId { get; set; }
+        public Recipe Recipe { get; set; }
+        public List<RecipeCategory> JoinEntities { get; }
         public ApplicationUser User { get; set; }
     }
 }
