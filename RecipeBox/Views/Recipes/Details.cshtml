@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@using RecipeBox.Models
+@model RecipeBox.Models.Recipe
+
+<h2>Recipe Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+    <p>This recipe does not belong to any categories</p>
+
+}
+else
+{
+    <h4>Categories that the recipe belongs to</h4>
+    <ul>
+    @foreach(RecipeCategory join in Model.JoinEntities)
+    {
+        <li>@join.Category.Name</li>
+@* add delete functionality *@
+    }
+    </ul>
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Add an Category", "AddCategory", new { id = Model.RecipeId })</p>

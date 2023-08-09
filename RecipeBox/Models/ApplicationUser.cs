@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Identity;
+// using Microsoft.AspNetCore.Identity;
 
-namespace RecipeBox.Models
-{
-    public class ApplicationUser : IdentityUser
-    {
+// namespace RecipeBox.Models
+// {
+//     public class ApplicationUser : IdentityUser
+//     {
 
-    }
-}
+//     }
+// }

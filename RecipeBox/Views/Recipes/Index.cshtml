@@ -1,1 +1,28 @@
-<h2>Recipes</h2>
+@* @model List<RecipeBox.Models.Recipe> *@
+
+@{
+    Layout = "_Layout";
+}
+
+@using RecipeBox.Models
+
+<h1>Recipes</h1>
+
+@if (Model.Count == 0)
+{
+    <h4>No recipes have been added</h4>
+}
+else
+{
+    <ul>
+    @foreach (Recipe recipe in Model)
+        {
+            <li>
+                @Html.ActionLink($"{recipe.Description}", "Details", new { id = recipe.RecipeId})
+            </li>
+        }
+    </ul>
+}
+
+<p>@Html.ActionLink("Add new recipe", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

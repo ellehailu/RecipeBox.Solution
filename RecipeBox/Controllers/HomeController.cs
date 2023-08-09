@@ -2,9 +2,9 @@
 using RecipeBox.Models;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
-using System.Security.Claims;
+// using Microsoft.AspNetCore.Identity;
+// using System.Threading.Tasks;
+// using System.Security.Claims;
 using System;
 
 
@@ -14,14 +14,16 @@ namespace RecipeBox.Controllers
     {
         private readonly RecipeBoxContext _db;
 
-        private readonly UserManager<ApplicationUser> _userManager;
-        public HomeController(UserManager<ApplicationUser> userManager, RecipeBoxContext db)
+        // private readonly UserManager<ApplicationUser> _userManager;
+        // public HomeController(UserManager<ApplicationUser> userManager, RecipeBoxContext db)
+        public HomeController(RecipeBoxContext db)
         {
-            _userManager = userManager;
+            // _userManager = userManager;
             _db = db;
         }
         [HttpGet("/")]
-        public async Task<ActionResult> Index()
+        // public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             // Category[] cats = _db.Categories.ToArray();
             // Dictionary<string, object[]> model = new Dictionary<string, object[]>();

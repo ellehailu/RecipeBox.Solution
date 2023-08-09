@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace RecipeBox.Models
 {
-    public class RecipeBoxContext : IdentityDbContext<ApplicationUser>
+    public class RecipeBoxContext : DbContext
+    // IdentityDbContext<ApplicationUser>
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Recipe> Recipes { get; set; }

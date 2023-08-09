@@ -26,14 +26,6 @@ namespace RecipeBox.Controllers
                 .FirstOrDefault(category => category.CategoryId == id);
             return View(thisCategory);
         }
-        public ActionResult Details(int id)
-        {
-            Category thisCategory = _db.Categories
-                .Include(category => category.JoinEntities)
-                .ThenInclude(join => join.CategoryId == id);
-                .FirstOrDefault(category => category.CategoryId == id);
-            return View(thisCategory);
-        }
         public ActionResult Create()
         {
             return View();

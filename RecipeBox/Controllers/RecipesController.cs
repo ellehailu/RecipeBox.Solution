@@ -7,17 +7,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace RecipeBox.Controllers
 {
-    public class RecipeController : Controller
+    public class RecipesController : Controller
     {
         private readonly RecipeBoxContext _db;
-        public RecipeController(RecipeBoxContext db)
+        public RecipesController(RecipeBoxContext db)
         {
             _db = db;
         }
 
         public ActionResult Index()
         {
-            return View();
+            return View(_db.Recipes.ToList());
         }
     }
 }

@@ -24,9 +24,9 @@ namespace RecipeBox
                       );
 
       // New code below!!
-      builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<RecipeBoxContext>()
-                .AddDefaultTokenProviders();
+      // builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+      //           .AddEntityFrameworkStores<RecipeBoxContext>()
+      //           .AddDefaultTokenProviders();
 
       WebApplication app = builder.Build();
 
@@ -37,8 +37,8 @@ namespace RecipeBox
       app.UseRouting();
 
       // New code below!
-      app.UseAuthentication();
-      app.UseAuthorization();
+      // app.UseAuthentication();
+      // app.UseAuthorization();
 
       app.MapControllerRoute(
           name: "default",
