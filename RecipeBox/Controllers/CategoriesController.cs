@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RecipeBox.Controllers
 {
-    public class CategoriesController : Controller  
+    [Authorize]
+    public class CategoriesController : Controller
     {
         private readonly RecipeBoxContext _db;
         public CategoriesController(RecipeBoxContext db)
@@ -36,6 +38,26 @@ namespace RecipeBox.Controllers
             _db.Categories.Add(category);
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult AddRecipe(int id)
+        {
+            Category thisCategory = _db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
+            ViewBag.RecipeId = new SelectList(_db.Recipes, "RecipeId", "Description");
+            return View(thisCategory);
+        }
+
+        [HttpPost]
+        public ActionResult AddRecipe(Category category, int categoryId)
+        {
+#nullable enable
+            RecipeCategory? joinEntity = _db.RecipeCategories.FirstOrDefault(join => (join.RecipeId == categoryId && join.CategoryId == category.CategoryId));
+#nullable disable
+            if (joinEntity == null && categoryId != 0)
+            {
+                _db.RecipeCategories.Add(new RecipeCategory() { RecipeId = categoryId, CategoryId = category.CategoryId });
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Details", new { id = category.CategoryId });
         }
     }
 }
