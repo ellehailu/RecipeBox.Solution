@@ -9,6 +9,6 @@ namespace RecipeBox.Models
         public int RecipeId { get; set; }
         public string Description { get; set; }
         public List<RecipeCategory> JoinEntities { get; }
-        // public ApplicationUser User { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace RecipeBox.Models
         public int CategoryId { get; set; }
         public string Name { get; set; }
         public List<RecipeCategory> JoinEntities { get; }
-        // public ApplicationUser User { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

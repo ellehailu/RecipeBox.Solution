@@ -19,5 +19,17 @@ namespace RecipeBox.Controllers
         {
             return View(_db.Recipes.ToList());
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Recipe recipe)
+        {
+            _db.Recipes.Add(recipe);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
